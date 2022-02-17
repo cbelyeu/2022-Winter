@@ -1,0 +1,19 @@
+/* color scheme: https://coolors.co/7ae7c7-75bba7-6c809a-6d2e46-ffd8be-f49e4c */
+h1 {
+    color: #6D2E46;
+}
+
+header, footer {
+    background-color: #6C809A;
+}
+
+#external_links {
+    padding: 20px;
+}
+img {
+    padding: 5px;
+}
+
+table {
+    background-color: #7AE7C7;
+}
