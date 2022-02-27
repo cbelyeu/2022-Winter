@@ -1,0 +1,53 @@
+@import url("https://www.fontspace.com/seuss-font-f25037");
+@import url("https://www.fontspace.com/green-eggs-and-spam-outline-font-f21685");
+@import url("https://www.fontspace.com/grinched-20-font-f21795");
+
+body {
+    background-color: #C6DEA6;
+    color: #C6DEA6;
+    font-family: "Grinched 2.0";
+}
+
+#content {
+    width:80%;
+    margin:auto;
+    background-color: #DFF2D8;
+    color: #7A6263;
+    padding: 10px 40px 40px 40px;
+}
+
+header {
+    margin: 0 auto;
+    padding: 20px;
+    border: 5px solid #7A6263;
+    background-color: #7EBDC3;
+    color: #FF9633;
+    text-align: center;
+    font-family: "Green Eggs and Spam Outline", "green eggs and spam outline", "green eggs and spam", "Green Eggs And Spam Outline", "Green Eggs And Spam";
+    font-size: 60px;
+    font-weight: 800;
+    
+}
+
+
+
+#link_box {
+    padding: 20px;
+    border: 5px solid #FF6666;
+    background-color: #87658D;
+}
+
+footer {
+    margin: 0 auto;
+}
+
+a {
+    text-align:center;
+    margin: 0 auto;
+    display: block;
+}
+
+p {
+    font-family: Seuss;
+    padding: 10px;
+}
