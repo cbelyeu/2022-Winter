@@ -4,7 +4,6 @@
 
 body {
     background-color: #C6DEA6;
-    color: #C6DEA6;
     font-family: "Grinched 2.0";
 }
 
@@ -45,9 +44,11 @@ a {
     text-align:center;
     margin: 0 auto;
     display: block;
+    font-size: 1.5em;
 }
 
 p {
     font-family: Seuss;
     padding: 10px;
+    font-size: 1.5em;
 }
