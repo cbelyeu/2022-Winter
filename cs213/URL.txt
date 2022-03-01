@@ -1,0 +1,5 @@
+http://localhost:9999/~cbelyeu/index.html
+
+chmod 755 wherever_I_am
+
+Color scheme: https://coolors.co/dff2d8-c6dea6-7ebdc3-7a6263-87658d-243119-ff6666-767522-143642-ff8360
