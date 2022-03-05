@@ -1,0 +1,141 @@
+body {
+    background-color:#3A3F7E;
+}
+#content {
+    display:grid;
+    background-color:#F0DFAD;
+    margin: 0 auto;
+    margin-top: 0px;
+    width: 100%;
+    padding-bottom:1px;
+}
+header {
+    /*Considerations for font:Algerian Regular,Castellar Regular,Colonna MT Regular, Stencil Regular*/
+    background-color:#E5A620;
+    font-family: "Castellar Regular","Algerian Regular",fantasy;
+    font-size: 13vw;
+    text-align: center;
+    margin: 0 auto;
+    width:100%;
+    padding: 30px 0;
+}
+footer {
+    display:flex;
+    background-color:#A89B8C;
+    
+    margin: 0 auto;
+    width:100%;
+    padding: 30px 0;
+}
+h1 {
+    padding:0.67em;
+    margin:0px;
+    font-size:6vw;
+}
+p,a,.align-with-body {
+    padding:3vw;
+    margin:1px;
+}
+.page-intro {
+    padding-top:25px;
+    padding-bottom:15px;
+    text-align:center;
+}
+.page-intro h1 {
+    margin:0px;
+    padding:0px;
+}
+.centered-text {
+    text-align:center;
+}
+.script-font {
+   
+    font-family:"Edwardian Script ITC Regular";
+}
+.remove-margins {
+    margin-top:0px;
+    margin-bottom:0px;
+    padding-bottom:0px;
+    padding-top:0px;
+}
+.remove-margins-top {
+    margin-top:0px;
+    padding-top:0px;
+}
+.remove-margins-bottom {
+    margin-bottom:0px;
+    padding-bottom:0px;
+}
+.align-with-header {
+    padding-left:10vw;
+}
+.dumbledore {
+    font-family:"Harrington Regular","Gigi Regular",serif;
+    font-size:larger;
+}
+.warning {
+
+}
+#hogwarts_crest {
+    height:25vw;
+    margin-top:-4vw;
+    margin-bottom:-4vw;
+}
+
+
+@media screen and (min-width:600px) {
+    body {
+        background-color:#5F040B;
+    }
+    #content {
+        grid-template-columns:1fr 1fr;
+        width:80%;
+    }
+    header {
+        font-size: 10vw;
+        width:80%;
+    }
+    footer {
+        width:80%;
+    }
+    h1 {
+        font-size:4.5vw;
+    }
+    .page-intro {
+        grid-column-end:span 2;
+        border:solid 5px #E5A620;
+    }
+    .align-with-header {
+        padding-left:12vw;
+    }
+    #hogwarts_crest {
+        height:20vw;
+        margin-bottom:-2vw;
+        margin-top:-2vw;
+    }
+}
+@media screen and (min-width:1200px) {
+    body {
+        background-color: #1B361A;
+    }
+    header {
+        font-size: 7vw;
+    }
+    h1 {
+        font-size:4vw;
+    }
+    .page-intro {
+        grid-column-end:span 3;
+    }
+    .align-with-header {
+        padding-left:13vw;
+    }
+    #content {
+        grid-template-columns:1fr 1fr 1fr;
+    }
+    #hogwarts_crest {
+        height:9vw;
+        margin-bottom:-2vw;
+        margin-top:-1vw;
+    }
+}
