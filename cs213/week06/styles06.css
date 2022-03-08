@@ -7,8 +7,16 @@ body {
     margin: 0 auto;
     margin-top: 0px;
     width: 100%;
-    padding-bottom:1px;
+    padding-bottom:1.5vw;
 }
+#content p {
+    line-height: 1.5;
+}
+.blocks {
+    padding:0px 4vw 2.5vw 4vw;
+    margin:1px;
+}
+
 header {
     /*Considerations for font:Algerian Regular,Castellar Regular,Colonna MT Regular, Stencil Regular*/
     background-color:#E5A620;
@@ -21,25 +29,34 @@ header {
 }
 footer {
     display:flex;
+    flex-flow:column;
     background-color:#A89B8C;
-    
     margin: 0 auto;
     width:100%;
     padding: 30px 0;
+    border-top:solid 5px #E5A620;
+    border-bottom:solid 5px #E5A620;
 }
 h1 {
     padding:0.67em;
     margin:0px;
     font-size:6vw;
 }
-p,a,.align-with-body {
-    padding:3vw;
-    margin:1px;
+hr {
+    border:5px solid #E5A620;
+}
+img {
+    max-height:100%;
+    max-width:100%;
+    margin:0 auto;
+    vertical-align:center;
 }
 .page-intro {
     padding-top:25px;
-    padding-bottom:15px;
+    padding-bottom:25px;
+    margin-bottom:4vw;
     text-align:center;
+    border:solid 5px #E5A620;
 }
 .page-intro h1 {
     margin:0px;
@@ -66,20 +83,43 @@ p,a,.align-with-body {
     margin-bottom:0px;
     padding-bottom:0px;
 }
-.align-with-header {
-    padding-left:10vw;
-}
 .dumbledore {
     font-family:"Harrington Regular","Gigi Regular",serif;
-    font-size:larger;
+    font-size:5vw;
+    color:#3A3F7E;
 }
 .warning {
-
+    align-items:center;
+    margin: 1px;
+    margin-bottom:20px;
+    font-size:4.5vw;
+}
+.warning p {
+    margin-top:0px;
+    margin-bottom:0px;
+}
+.signature {
+    text-align:right;
+    font-family:"Edwardian Script ITC Regular";
 }
 #hogwarts_crest {
     height:25vw;
     margin-top:-4vw;
     margin-bottom:-4vw;
+}
+#menubar {
+    display:flex;
+    flex-flow:column;
+    justify-content:space-around;
+    align-items:center;
+    margin: 0 auto;
+    border:solid 5px #E5A620;
+    background-color:#F0DFAD;
+    width:40%;
+    padding:2vw;
+}
+#menubar a {
+    padding:2.5vw;
 }
 
 
@@ -97,22 +137,31 @@ p,a,.align-with-body {
     }
     footer {
         width:80%;
+        flex-flow:row;
     }
     h1 {
         font-size:4.5vw;
     }
     .page-intro {
         grid-column-end:span 2;
-        border:solid 5px #E5A620;
-    }
-    .align-with-header {
-        padding-left:12vw;
     }
     #hogwarts_crest {
         height:20vw;
         margin-bottom:-2vw;
         margin-top:-2vw;
     }
+    .dumbledore {
+        color:#5F040B;
+        font-size:4vw;
+    }
+    .warning {
+        font-size:3.5vw;
+        align-self:center;
+    }
+    #menubar {
+        margin-right:3vw;
+    }
+    
 }
 @media screen and (min-width:1200px) {
     body {
@@ -127,9 +176,6 @@ p,a,.align-with-body {
     .page-intro {
         grid-column-end:span 3;
     }
-    .align-with-header {
-        padding-left:13vw;
-    }
     #content {
         grid-template-columns:1fr 1fr 1fr;
     }
@@ -137,5 +183,17 @@ p,a,.align-with-body {
         height:9vw;
         margin-bottom:-2vw;
         margin-top:-1vw;
+    }
+    .dumbledore {
+        color:#1B361A;
+        font-size:2vw;
+    }
+    .warning {
+        font-size:2vw;
+        margin-left:2vw;
+    }
+    #menubar {
+        margin-right:2vw;
+        flex-flow:row;
     }
 }
