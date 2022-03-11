@@ -1,0 +1,25 @@
+/*My possible color code: https://coolors.co/d0a3bf-c6bda3-bbd686-d5e4a2-eef1bd-e29d78
+Another cool one: https://coolors.co/5efc8d-76fbc0-c5e5ca-e1dbb6-fcd0a1-e4a3a0-cb769e*/
+
+form {
+    /*display:flexbox;
+    flex-direction:column;*/
+    background-color:#D5E4A2;
+    width:500px;
+    position:absolute;
+    top:20px;
+}
+input {
+    position:absolute;
+    right: 30px;
+}
+div {
+    padding: 20px 30px;
+}
+.warning {
+    display:none;
+    background-color:#D0A3BF;
+    border-color:#C6BDA3;
+    border-radius:3px;
+    margin-bottom:5px;
+}

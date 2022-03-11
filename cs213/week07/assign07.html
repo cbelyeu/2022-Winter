@@ -1,9 +1,9 @@
-This will be assignment #7<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title></title>
-        <link rel="stylesheet" href="../week0/styles0.css" type="text/css">
+        <title>Javascript Loan Calculator</title>
+        <link rel="stylesheet" href="../week07/styles07.css" type="text/css">
         <style>
 
         </style>
@@ -11,8 +11,147 @@ This will be assignment #7<!DOCTYPE html>
     <body>
         <header>
 
+
         </header>
         <div id="content">
+            <script>
+                function validateForm() {
+                    if(validateAPR()){
+                        if(validateTerm()) {
+                            if(validateAmount()) {
+                                return true;
+                            } else {
+                                document.getElementById("amount").focus();
+                            }
+                        } else {
+                            document.getElementById("term").focus();
+                        }
+                    } else {
+                        document.getElementById("apr").focus();
+                    }
+                    return false;
+                }
+                function validateAPR() {
+                    var annualPercent = parseFloat(document.getElementById("apr").value);
+                    if(isNaN(annualPercent)) {
+                        document.getElementById("apr_warning").style.display = "block";
+                        return false;
+                    } else {
+                        if (annualPercent <= 0 || annualPercent > 25) {
+                            document.getElementById("apr_warning").style.display = "block";
+                            return false;
+                        } else {
+                           document.getElementById("apr_warning").style.display = "none";
+                           if(document.getElementById("payment").value != "") {
+                               //alert("entered if statement for apr");
+                               updatePayment();
+                           }
+                           return true;
+                        }
+                    }
+                }
+                function validateTerm() {
+                    var loanTerm = parseFloat(document.getElementById("term").value);
+                    if(isNaN(loanTerm)) {
+                            document.getElementById("term_warning").style.display = "block";
+                        return false;
+                    } else {
+                        //alert(loanTerm);
+                        if (loanTerm > 0 && loanTerm <= 40) {
+                            document.getElementById("term_warning").style.display = "none";
+                            if(document.getElementById("payment").value != "") {
+                                //alert("entered term if");
+                                updatePayment();
+                            }
+                        } else {
+                            document.getElementById("term_warning").style.display = "block";
+                            return false;
+                        }
+                        return true;
+                    }
+                }
+                function validateAmount() {
+                    var amount = parseFloat(document.getElementById("amount").value);
+                    if(isNaN(amount)) {
+                        document.getElementById("amount_warning").style.display = "block";
+                        return false;
+                    } else {
+                        document.getElementById("amount_warning").style.display = "none";
+                           if(document.getElementById("payment").value != "") {
+                               //alert("entered amount if");
+                               updatePayment();
+                           }
+                        return true;
+                    }
+                }
+                /*
+                function validate() {
+                    var  = ;
+                    if() {
+                        //alert("Not a number");
+                    } else {
+                        
+                    }
+                }
+                */
+                function calculatePayment() {
+                    if(validateForm()) {
+                        updatePayment();
+                    }
+                }
+                function updatePayment() {
+                    var monthlyAPR = (parseFloat(document.getElementById("apr").value))/1200;
+                    var paymentNumber = (parseFloat(document.getElementById("term").value)) * 12;
+                    var amount = parseFloat(document.getElementById("amount").value);
+                    var trickyValueWithExponent = Math.pow((1 + monthlyAPR),paymentNumber);
+                    var myNumerator = amount * monthlyAPR * trickyValueWithExponent;
+                    var myDenominator = trickyValueWithExponent - 1;
+                    var payment = myNumerator/myDenominator;
+                    document.getElementById("payment").value = payment.toFixed(2);
+                }
+                function clearContent() {
+                    document.getElementById("apr").value = "";
+                    document.getElementById("term").value = "";
+                    document.getElementById("amount").value = "";
+                    document.getElementById("payment").value = "";
+                    document.getElementById("apr").focus();
+                    document.getElementById("apr_warning").style.display = "none";
+                    document.getElementById("term_warning").style.display = "none";
+                    document.getElementById("amount_warning").style.display = "none";
+                }
+            </script>
+            <form>
+                <div>
+                    <span class="warning" id="apr_warning">This field could use more attention:</span>
+                    <!--Valid input below is a float between 0 and 25-->
+                    <span><label for="apr">Annual Percentage Rate</label></span>
+                    <input type="text" name="apr" id="apr" onchange="validateAPR()">
+                </div>
+                <div>
+                    <span class="warning" id="term_warning">This field could use more attention:</span>
+                    <!--Valid input below is a number 0 < input <= 40-->
+                    <span><label for="term">Loan Term</label></span>
+                    <input type="text" name="term" id="term" onchange="validateTerm()">
+                </div>
+                <div>
+                    <span class="warning" id="amount_warning">This field could use more attention:</span>
+                    <!--Accepts any positive number-->
+                    <span><label for="amount">Loan Amount</label></span>
+                    <input type="text" name="amount" id="amount" onchange="validateAmount()">
+                </div>
+                <div>
+                    <!--Accepts no input-->
+                    <span><label for="payment">Monthly Payment</label></span>
+                    <input type="text" readonly name="payment" id="payment">
+                </div>
+                <!---->
+                <div>
+                    <button type="button" name="clear" id="clear" onclick="clearContent()">Reset</button>
+                    <button type="button" name="calculate" id="calculate" onclick="calculatePayment()">
+                        Calculate Payment
+                    </button>
+                </div>
+            </form>
 
         </div>
         <footer>
