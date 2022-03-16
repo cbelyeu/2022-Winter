@@ -1,0 +1,14 @@
+#checkbox_group {
+    display:flex;
+    flex-flow:column;
+    background-color: #E1DBB6;
+}
+.warning_box {
+    background-color:#FCD0A1;
+    display:none;
+}
+#content {
+    background-color: #C5E5CA;
+    border: 5px solid #E1DBB6;
+    padding:15px;
+}

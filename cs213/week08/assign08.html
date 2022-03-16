@@ -1,19 +1,213 @@
-This will be assignment #8<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <title></title>
-        <link rel="stylesheet" href="../week0/styles0.css" type="text/css">
+        <link rel="stylesheet" href="../week08/styles08.css" type="text/css">
         <style>
 
         </style>
+        <script>
+            function validatePhone() {
+                var stringToTest = document.getElementById("phone").value;
+                //alert(/d/.test("stringToTest"));//returns false
+                //alert(/d/.test(stringToTest));//returns false
+                //alert(/\d/.test(stringToTest));//returns true
+                var result = /\d{3}-\d{3}-\d{4}/.test(stringToTest);
+                if(!result) {
+                    document.getElementById("phone-warning").style.display = "block";
+                    document.getElementById("phone").focus();
+                    return false;
+                } else {
+                    document.getElementById("phone-warning").style.display = "none";
+                    return true;
+                }
+            }
+
+            function validateCreditNumber() {
+                var stringCreditNumber = document.getElementById("credit_card").value;
+                var result = /\d{4}\s\d{4}\s\d{4}\s\d{4}/.test(stringCreditNumber);
+                if (result) {
+                    document.getElementById("cardnumber-warning").style.display = "none";
+                    return true;
+                } else {
+                    document.getElementById("cardnumber-warning").style.display = "block";
+                    document.getElementById("credit_card").focus();
+                    return false;
+                }
+            }
+
+            function validateCreditExpiration() {
+                var expirationString = document.getElementById("exp_date").value;
+                var month_year_seperated = expirationString.split("/");
+                if(month_year_seperated.length == 2){
+                    var month = month_year_seperated[0];
+                    var year = month_year_seperated[1];
+                    if(/(0[1-9]|1[0-2])/.test(month)){
+                        if(/[1-9]\d{4}/.test(year)) {
+                            //this has at least five digits, and the first one is not zero
+                            //this is a larger number than 2020
+                            document.getElementById("exp-warning").style.display = "none";
+                        } else if (/\d{4}/.test(year)) {
+                            //this year has four digits, though it could be five if the first one is zero
+                            if(/\d{5}/.test(year)){
+                                year = year.substring(1);
+                            }
+                            if(year <= "2020" ) { 
+                                document.getElementById("exp-warning").style.display="block";
+                                document.getElementById("exp_date").focus(); 
+                                return false; 
+                            } else { 
+                                document.getElementById("exp-warning").style.display="none";
+                                return true; 
+                            }
+                        } else {
+                            document.getElementById("exp-warning").style.display="block";
+                            document.getElementById("exp_date").focus();
+                            return false;
+                        }
+                    } else {
+                        document.getElementById("exp-warning").style.display="block"; 
+                        document.getElementById("exp_date").focus();
+                        return false;
+                    }
+                    
+                } else {
+                    document.getElementById("exp-warning").style.display = "block";
+                    document.getElementById("exp_date").focus();
+                    return false;
+                }
+            }
+        
+
+            function calculateTotal() {
+                var total = 0;
+                if (document.getElementById("item_0").checked) {
+                    total += 1500.00;
+                }
+                if (document.getElementById("item_1").checked) {
+                    total += 1300.00;
+                }
+                if (document.getElementById("item_2").checked) {
+                    total += 5.00;
+                }
+                if (document.getElementById("item_3").checked) {
+                    total += 20.00;
+                }
+                document.getElementById("total").value = total.toFixed(2);
+            }
+
+            function resetForm() {
+                document.getElementById("first_name").value = "";
+                document.getElementById("last_name").value = "";
+                document.getElementById("address").value = "";
+                document.getElementById("phone").value = "";
+                document.getElementById("total").value = "";
+                document.getElementById("credit_card").value = "";
+                document.getElementById("exp_date").value = "";
+                document.getElementById("first_name").focus();
+            }
+
+            //document.getElementById("validate").addEventListener("submit",preventDefault());
+            //document.getElementById("validate").addEventListener("click",submitForm());
+
+
+            function submitForm(event) {
+                var missingInfoId = "";
+                if(document.getElementById("first_name").value != "") {
+                    if(document.getElementById("last_name").value != "") {
+                        if(document.getElementById("address").value != "") {
+                            if(validatePhone()) {
+                                if(document.getElementById("total").value != "") {
+                                    if(validateCreditNumber()) {
+                                        if(validateCreditExpiration()) {
+                                            return true;
+                                        } else { missingInfoId = "exp_date"; }
+                                    } else { missingInfoId = "credit_card"; }
+                                } else { missingInfoId = "total"; }
+                            } else { missingInfoId = "phone"; }
+                        } else { missingInfoId = "address"; }
+                    } else { missingInfoId = "last_name"; }
+                } else { missingInfoId = "first_name"; }
+                document.getElementById(missingInfoId).focus();
+                event.preventDefault();
+                return false;
+            }
+
+        </script>
     </head>
     <body>
         <header>
 
         </header>
         <div id="content">
-
+            <form>
+                <div>
+                    <label for="first_name">First Name</label>
+                    <input type="text" name="first_name" id="first_name">
+                </div>
+                <div>
+                    <label for="last_name">Last Name</label>
+                    <input type="text" name="last_name" id="last_name">
+                </div>
+                <div>
+                    <label for="address">Address</label>
+                    <input type="text-area" name="address" id="address">
+                </div>
+                <div>
+                    <div class="warning_box" id="phone-warning">This field needs more attention</div>
+                    <!--Will require validation-maybe regex-->
+                    <label for="phone">Phone number</label>
+                    <input type="text" name="phone" id="phone" onchange="validatePhone()">
+                </div>
+                <div id="checkbox_group">
+                    <span>
+                        <input type="checkbox" name="item_0" id="item_0" onchange="calculateTotal()">
+                        <label for="item_0">Unicorn(docile): $1500</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" name="item_1" id="item_1" onchange="calculateTotal()">
+                        <label for="item_1">Unicorn(difficult): $1300</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" name="item_2" id="item_2" onchange="calculateTotal()">
+                        <label for="item_2">Unicorn(eldritch & aggressive): $5.00</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" name="item_3" id="item_3" onchange="calculateTotal()">
+                        <label for="item_3">Unicorn(healing powers-also stabs people): $20.00</label>
+                    </span>
+                </div>
+                <div>
+                    <!--Will require updating and interaction with things-->
+                    <label for="total">Total price of selected Unicorns</label>
+                    <input type="text" readonly name="total" id="total">
+                </div>
+                <div>
+                    <input type="radio" name="card" id="visa">
+                    <label for="visa">Visa</label>
+                    <input type="radio" name="card" id="mastercard">
+                    <label for="mastercard">Mastercard</label>
+                    <input type="radio" name="card" id="amer_express">
+                    <label for="amer_express">American Express</label>
+                </div>
+                <div>
+                    <div class="warning_box" id="cardnumber-warning">This field needs more attention</div>
+                    <!--Will require validation-->
+                    <label for="credit_card">Credit Card #</label>
+                    <input type="text" name="credit_card" id="credit_card" onchange="validateCreditNumber()">
+                </div>
+                <div>
+                    <div class="warning_box" id="exp-warning">This field needs more attention</div>
+                    <!--Will require validation-maybe with regex-->
+                    <label for="exp_date">Credit Card Expiration Date</label>
+                    <input type="text" name="exp_date" id="exp_date" onchange="validateCreditExpiration()">
+                </div>
+                <div>
+                    <button type="button" name="reset" id="reset" onclick="resetForm()">Reset</button>
+                    <input type="submit" name="validate" id="validate" onclick="submitForm(event)" onsubmit="event.preventDefault(); submitForm(event);">
+                </div>
+            </form>
         </div>
         <footer>
 
