@@ -1,4 +1,4 @@
-This will be assignment #9<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -7,13 +7,45 @@ This will be assignment #9<!DOCTYPE html>
         <style>
 
         </style>
+        <script>
+            function updateCountry(country_name) {
+                alert("I have entered the udpate");
+                var file_name = country_name + ".txt";
+                alert(file_name);
+                var xhttp = new XMLHttpRequest();
+                alert("creating a new xml worked");
+                xhttp.onload = function() {
+                    alert("entered the onload function");
+                    document.getElementById("countryDisplay").innerHTML = this.responseText;
+                    //alert(this.responseText);
+                }
+                xhttp.open("GET", file_name);
+                xhttp.send();
+            }
+        </script>
     </head>
     <body>
         <header>
 
         </header>
         <div id="content">
+            <!--The content of these divs should update independent of each other-->
+            <div id="part_1">
+                <input type="radio" name="country" id="usa" onchange="updateCountry('usa')">
+                <label for="usa">United States</label>
+                <input type="radio" name="country" id="mexico" onchange="updateCountry('mexico')">
+                <label for="mexico">Mexico</label>
+                <input type="radio" name="country" id="canada" onchange="updateCountry('canada')">
+                <label for="canada">Canada</label>
+                <input type="radio" name="country" id="russia" onchange="updateCountry('russia')">
+                <label for="russia">Russia</label>
+                <div id="countryDisplay">
 
+                </div>
+            </div>
+            <div id="part_2">
+
+            </div>
         </div>
         <footer>
 
