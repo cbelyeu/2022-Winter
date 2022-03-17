@@ -2,6 +2,7 @@
     display:flex;
     flex-flow:column;
     background-color: #E1DBB6;
+    margin-bottom: 10px;
 }
 .warning_box {
     background-color:#FCD0A1;
@@ -11,4 +12,20 @@
     background-color: #C5E5CA;
     border: 5px solid #E1DBB6;
     padding:15px;
+    width: 600px;
+}
+div {
+    min-height:40px;
+}
+span {
+    min-height:30px;
+}
+.textbox {
+    float:right;
+    padding:5px;
+    margin:1px;
+}
+label {
+    padding:10px;
+    margin:1px;
 }

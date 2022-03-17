@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <title>Buy a Unicorn</title>
         <link rel="stylesheet" href="../week08/styles08.css" type="text/css">
         <style>
 
@@ -144,21 +144,21 @@
             <form>
                 <div>
                     <label for="first_name">First Name</label>
-                    <input type="text" name="first_name" id="first_name">
+                    <input type="text" name="first_name" id="first_name" class="textbox">
                 </div>
                 <div>
                     <label for="last_name">Last Name</label>
-                    <input type="text" name="last_name" id="last_name">
+                    <input type="text" name="last_name" id="last_name" class="textbox">
                 </div>
                 <div>
                     <label for="address">Address</label>
-                    <input type="text-area" name="address" id="address">
+                    <textarea name="address" id="address" class="textbox">Address</textarea>
                 </div>
                 <div>
                     <div class="warning_box" id="phone-warning">This field needs more attention</div>
                     <!--Will require validation-maybe regex-->
                     <label for="phone">Phone number</label>
-                    <input type="text" name="phone" id="phone" onchange="validatePhone()">
+                    <input type="text" name="phone" id="phone" onchange="validatePhone()" class="textbox">
                 </div>
                 <div id="checkbox_group">
                     <span>
@@ -181,7 +181,7 @@
                 <div>
                     <!--Will require updating and interaction with things-->
                     <label for="total">Total price of selected Unicorns</label>
-                    <input type="text" readonly name="total" id="total">
+                    <input type="text" readonly name="total" id="total" class="textbox">
                 </div>
                 <div>
                     <input type="radio" name="card" id="visa">
@@ -195,13 +195,13 @@
                     <div class="warning_box" id="cardnumber-warning">This field needs more attention</div>
                     <!--Will require validation-->
                     <label for="credit_card">Credit Card #</label>
-                    <input type="text" name="credit_card" id="credit_card" onchange="validateCreditNumber()">
+                    <input type="text" name="credit_card" id="credit_card" onchange="validateCreditNumber()" class="textbox">
                 </div>
                 <div>
                     <div class="warning_box" id="exp-warning">This field needs more attention</div>
                     <!--Will require validation-maybe with regex-->
                     <label for="exp_date">Credit Card Expiration Date</label>
-                    <input type="text" name="exp_date" id="exp_date" onchange="validateCreditExpiration()">
+                    <input type="text" name="exp_date" id="exp_date" onchange="validateCreditExpiration()" class="textbox">
                 </div>
                 <div>
                     <button type="button" name="reset" id="reset" onclick="resetForm()">Reset</button>
