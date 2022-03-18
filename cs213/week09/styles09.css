@@ -1,0 +1,15 @@
+#student_display div {
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+}
+#content {
+    width:600px;
+    margin:0 auto;
+    background-color:#DAFEB7;
+    border:5px solid #837A75;
+}
+.warning {
+    background-color:#E2C2FF;
+    background-color:#978477;
+    background-color:#AA8E78;
+}

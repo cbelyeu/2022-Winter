@@ -2,26 +2,69 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title></title>
-        <link rel="stylesheet" href="../week0/styles0.css" type="text/css">
+        <title>Ajax Display</title>
+        <link rel="stylesheet" href="../week09/styles09.css" type="text/css">
         <style>
 
         </style>
         <script>
             function updateCountry(country_name) {
-                alert("I have entered the udpate");
                 var file_name = country_name + ".txt";
-                alert(file_name);
                 var xhttp = new XMLHttpRequest();
-                alert("creating a new xml worked");
                 xhttp.onload = function() {
-                    alert("entered the onload function");
-                    document.getElementById("countryDisplay").innerHTML = this.responseText;
-                    //alert(this.responseText);
+                    var cities_pop = this.responseText.split(/\r?\n/);
+                    var cities_string = "<p>";
+                    for (city in cities_pop) {
+                        current_city = cities_pop[city];
+                        cities_string = cities_string + current_city + "<br>";
+                    }
+                    cities_string = cities_string + "</p>";
+                    document.getElementById("countryDisplay").innerHTML = cities_string;
+                    
                 }
                 xhttp.open("GET", file_name);
                 xhttp.send();
             }
+            function read_json() {
+                document.getElementById("student_display").innerHTML = "";
+                var file_name = document.getElementById("json_url").value;
+                const xhttp = new XMLHttpRequest();
+                xhttp.onload = function() {
+                    if(xhttp.status == 404) {
+                        document.getElementById("student_display").innerHTML = "<span class='warning'>The file name you entered is invalid</span>";
+                    }
+                    var data = JSON.parse(this.responseText);
+                    for (student in data.students) {
+                        current_student = data.students[student];//here is the actual student object
+                        //each div I create will contain all information for a single student
+                        const new_html_container = document.createElement("div");
+                        //this span will display the name
+                        const displayName = document.createElement("span");
+                        const fullname = document.createTextNode(current_student.first + " " + current_student.last);
+                        displayName.appendChild(fullname);
+                        //this span will handle the address
+                        const displayAddress = document.createElement("span");
+                        const current_address = current_student.address;
+                        const fullAddress = document.createTextNode(current_address.city + " " + current_address.state + " " + current_address.zip);
+                        displayAddress.appendChild(fullAddress);
+                        //this span will contain the major
+                        const displayMajor = document.createElement("span");
+                        const majorString = document.createTextNode(current_student.major);
+                        displayMajor.appendChild(majorString);
+                        //this span will contain the gpa
+                        const displayGPA = document.createElement("span");
+                        //this will bring them all together and place them within the existing document
+                        new_html_container.appendChild(displayName);
+                        new_html_container.appendChild(displayAddress);
+                        new_html_container.appendChild(displayMajor);
+                        new_html_container.appendChild(displayGPA);
+                        document.getElementById("student_display").appendChild(new_html_container);
+                    }
+                }
+                xhttp.open("GET", file_name);
+                xhttp.send();
+            }
+
         </script>
     </head>
     <body>
@@ -44,7 +87,12 @@
                 </div>
             </div>
             <div id="part_2">
+                <label for="json_url">Name of desired file</label>
+                <input type="text" id="json_url" value="json.txt">
+                <button type="button" onclick="read_json()">Show</button>
+                <div id="student_display">
 
+                </div>
             </div>
         </div>
         <footer>
