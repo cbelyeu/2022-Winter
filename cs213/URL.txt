@@ -2,4 +2,8 @@ http://localhost:9999/~cbelyeu/index.html
 
 chmod 755 wherever_I_am
 
-Color scheme: https://coolors.co/dff2d8-c6dea6-7ebdc3-7a6263-87658d-243119-ff6666-767522-143642-ff8360
+Color scheme:(browns) 	https://coolors.co/3a3f7e-f0dfad-e5a620-a89b8c-5f040b-1b361a-c7a156-977543-7f5f3a-674930
+	(minty sherbet)	https://coolors.co/5efc8d-76fbc0-c5e5ca-e1dbb6-fcd0a1-e4a3a0-cb769e
+
+https://validator.w3.org/
+http://jigsaw.w3.org/css-validator/
